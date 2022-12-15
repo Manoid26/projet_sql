@@ -196,7 +196,7 @@ Insert Into centre_spacial(nom,id_pays,directeur)/*10*/
 Values('ISA','30','Avi Blasberger');
 
 Insert Into centre_spacial(nom,id_pays,directeur)/*11*/
-Values('CAMSPACE','52','Charlie Essaga');
+Values('CAMSPACE','52','Zak Ekoto');
 
 Insert Into centre_spacial(nom,id_pays,directeur)/*12*/
 Values('BDD','5','samuel emilie');
@@ -204,40 +204,149 @@ Values('BDD','5','samuel emilie');
 
 /*Vehiculeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*1*/
 Values('','ORION','Capsule',TRUE,'électrique');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*2*/
 Values('','R2D2','Rover',FALSE,'nucléaire');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*3*/
 Values('','Ariane 6','Lanceur',FALSE,'ergolds_liquides');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*4*/
 Values('','H3','Lanceur',FALSE,'ergolds_liquides');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*5*/
 Values('','Angara','Lanceur',FALSE,'ergolds_solides');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*6*/
 Values('','Nespresso','Capsule',TRUE,'hydrogene');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*7*/
 Values('','Apollo','Rover',TRUE,'électrique');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*8*/
 Values('','Spoutnik-1','Satellite',TRUE,'électrique');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*9*/
 Values('','Ananas','Capsule',FALSE,'ergols_solides');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*10*/
 Values('','Philips','Lanceur',FALSE,'nucléaire');
 
-Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','Philips','Lanceur',FALSE,'nucléaire');
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*11*/
+Values('','WALL-E','Rover',FALSE,'ergols_hypergolique');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*12*/
+Values('','Tianzhou','Satelite',TRUE,'électrique');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*13*/
+Values('','baguette','lanceur',TRUE,'hydrogene');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)/*14*/
+Values('','Bretzel','Capsule',TRUE,'électrique');
 
 
+/*Astronauteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*1*/
+Values('1','1','Clinton','Francklin','1969-12-01',NULL,'1999-02-12');/*1*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*2*/
+Values('1','1','Big','Mac','1967-07-02',NULL,'2001-12-05');/*B*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*3*/
+Values('4','4','Schneider','Charle','1999-11-20',NULL,'2022-11-06');/*1*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*4*/
+Values('3','4','Nintendo','Switch','2017-03-03',NULL,'2022-12-18');/*A*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*5*/
+Values('5','3','Pasquier','Thomas','1978-0227',NULL,'2012-01-12');/*A*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*6*/
+Values('52','11','Ernest','Simo','1956-07-21',NULL,'1985-05-16');/*1*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*7*/
+Values('1','1','Clooney','George','1961-05-6',NULL,'1981-04-12');/*B*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*8*/
+Values('19','9','Miroslaw','Hermaszewski','1941-09-15','2022-12-12','1968-12-03');
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*9*/
+Values('2','4','Boming','Liu','1998-05-20',NULL,'2018-06-25');/*1*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*10*/
+Values('52','5','Essaga','Charlies','2001-07-10',NULL,'2016-08-01');/*A*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*11*/
+Values('13','11','Colomb','Christrophe','1451-05-26',NULL,'1652-07-26');/*B*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*12*/
+Values('31','5','Muyard','Cyprien','1940-02-29',NULL,'1970-09-18');/*A*/
+
+Insert Into astronaute(id_pays, id_centre_spatial, nom, prenom, date_naissance, date_mort, date_recrutement)/*13*/
+Values('25','5','Smith','Quentin','1995-01-01',NULL,'2019-09-06');/*B*/
+
+/*equipageeeeeeeeeeeeeeeeeeeeeeeeee*/
+
+Insert Into équipage(nom)/*1*/
+Values('troupes délites');
+
+Insert Into équipage(nom)/*2*/
+Values('free wifi');
+
+Insert Into équipage(nom)/*3*/
+Values('no stress déstresse');
+
+/*lien astrooooooooooo d'eeeeeeqqqqqqqqqquiiiiiiiiiipeeeeeee*/
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('10','2','Medecin');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('12','2','Copilote');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('5','2','Chercheur');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('4','2','Ingenieur_de_bord');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('10','2','Medecin');
+
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('13','1','Ingénieur_de_bord');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('11','1','Commandant');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('7','1','Chercheur');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('2','1','Medecin');
+
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('9','3','Medecin');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('6','3','ingenieur_de_bord');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('3','3','Chercheur');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('1','3','Commandant');
+
+
+
+/*plaaaaaaaaaaaaaaaaaaaaneeeeeeeeeeete*/
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel,système_solaire
 
 
 
