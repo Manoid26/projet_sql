@@ -205,28 +205,39 @@ Values('BDD','5','samuel emilie');
 /*Vehiculeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','ORION','Capsule','TRUE','électrique');
+Values('','ORION','Capsule',TRUE,'électrique');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','R2D2','Rover','FALSE','nucléaire');
+Values('','R2D2','Rover',FALSE,'nucléaire');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','Ariane 6','Lanceur','FALSE','ergolds_liquides');
+Values('','Ariane 6','Lanceur',FALSE,'ergolds_liquides');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','H3','Lanceur','FALSE','ergolds_liquides');
+Values('','H3','Lanceur',FALSE,'ergolds_liquides');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','Angara','Lanceur','FALSE','ergolds_solides');
+Values('','Angara','Lanceur',FALSE,'ergolds_solides');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','Nespresso','Capsule','TRUE','hydrogene');
+Values('','Nespresso','Capsule',TRUE,'hydrogene');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','Apollo','Rover','TRUE','électrique');
+Values('','Apollo','Rover',TRUE,'électrique');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','','Satellite','TRUE','');
+Values('','Spoutnik-1','Satellite',TRUE,'électrique');
 
 Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
-Values('','Apollo','Rover','TRUE','électrique');
+Values('','Ananas','Capsule',FALSE,'ergols_solides');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Philips','Lanceur',FALSE,'nucléaire');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Philips','Lanceur',FALSE,'nucléaire');
+
+
+
+
+
