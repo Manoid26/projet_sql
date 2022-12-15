@@ -157,48 +157,76 @@ Values('Cuba','Espagnol');
 Insert Into pays(nom, langue_origine)/*52*/
 Values('Cameroun','Francais');
 
+Insert Into pays(nom, langue_origine)/*53*/
+Values('Angleterre','Anglais');
+
 /*--------------Centre spacial-------------*/
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*1*/
 Values('NASA','1','Bill Nelson');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*2*/
 Values('CNSA','2','Tang Dengjie');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*3*/
 Values('CNES','5','Philippe Baptiste');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*4*/
 Values('ROSCOSMOS','10','Iouri Borissov');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*4*/
 Values('JAXA','3','YAMAKAWA Hiroshi');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*5*/
 Values('ISRO','6','Sreedhara Panicker Somanath');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
+Insert Into centre_spacial(nom,id_pays,directeur)/*6*/
 Values('ASI','7','Mario Mozzarella');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('ASC','','');
+Insert Into centre_spacial(nom,id_pays,directeur)/*7*/
+Values('ASC','9','tabarnac');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('UKSA','','');
+Insert Into centre_spacial(nom,id_pays,directeur)/*8*/
+Values('UKSA','53','Alice Bunn');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('ASAL','','');
+Insert Into centre_spacial(nom,id_pays,directeur)/*9*/
+Values('ASAL','50','Azzedine Oussedik');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('ISA','','');
+Insert Into centre_spacial(nom,id_pays,directeur)/*10*/
+Values('ISA','30','Avi Blasberger');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('ISA','','');
+Insert Into centre_spacial(nom,id_pays,directeur)/*11*/
+Values('CAMSPACE','52','Charlie Essaga');
+
+Insert Into centre_spacial(nom,id_pays,directeur)/*12*/
+Values('BDD','5','samuel emilie');
 
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('CAMSPACE','','');
+/*Vehiculeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
 
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','ORION','Capsule','TRUE','électrique');
 
-Insert Into centre_spacial(nom,id_pays,directeur)
-Values('BDD','','');
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','R2D2','Rover','FALSE','nucléaire');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Ariane 6','Lanceur','FALSE','ergolds_liquides');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','H3','Lanceur','FALSE','ergolds_liquides');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Angara','Lanceur','FALSE','ergolds_solides');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Nespresso','Capsule','TRUE','hydrogene');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Apollo','Rover','TRUE','électrique');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','','Satellite','TRUE','');
+
+Insert Into vehicule(id_centre_spatial,nom,type_vehicule,habitable,type_énergie)
+Values('','Apollo','Rover','TRUE','électrique');
