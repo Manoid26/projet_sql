@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS vehicule (
        nom VARCHAR(255) NOT NULL,
        type_vehicule ENUM('Lanceur','Capsule','Satellite','Rover') NOT NULL,
        habitable BOOLEAN NOT NULL,
-       type_énergie ENUM('électrique','nucléaire','ergols_solides','ergolds_liquides','ergols_hypergoliques','hydrogène') NOT NULL,
+       type_energie ENUM('électrique','nucléaire','ergols_solides','ergols_liquides','ergols_hypergoliques','hydrogène') NOT NULL,
        CONSTRAINT pk_vehicule PRIMARY KEY (id),
        CONSTRAINT fk_vehicule_id_centre_spacial_centre_spacial FOREIGN KEY (id_centre_spacial) REFERENCES centre_spacial(id) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
