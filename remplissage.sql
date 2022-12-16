@@ -346,7 +346,132 @@ Values('1','3','Commandant');
 
 /*plaaaaaaaaaaaaaaaaaaaaneeeeeeeeeeete*/
 
-Insert Into planetes(nom,type_planete,diamètre,satelite_naturel,système_solaire
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*1*/
+Values ('Mercure','telluriques','4880','0');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*2*/
+Values ('Terre','telluriques','12742','1');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*3*/
+Values ('Venus','telluriques','12104','0');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*4*/
+Values ('Mars','telluriques','6779','2');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*5*/
+Values ('Jupiter','gazeuses','139820','80');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*6*/
+Values ('Saturne','gazeuses','116460','82');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*7*/
+Values ('Uranus','gazeuses','50724','27');
+
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*8*/
+Values ('Neptune','gazeuses','49244','14');
+
+
+/*Laaaaaaaaaaaaaaaaaaaaaaaaaaancementtttttttttttttt*/
+
+Insert Into lancement(lieu, date_heure, id_pays, id_planete)/*1*/
+Values ('Guyanes','2020-05-21T12:00:01','5','2');
+
+Insert Into lancement(lieu, date_heure, id_pays, id_planete)/*2*/
+Values ('Taiyuan','1998-07-22T16:05:09','2','2');
+
+Insert Into lancement(lieu, date_heure, id_pays, id_planete)/*3*/
+Values ('Tanegashina','2014-09-14T08:09:19','3','2');
+
+Insert Into lancement(lieu, date_heure, id_pays, id_planete)/*4*/
+Values ('Plesetsk','2015-11-28T13:25:29','10','2');
+
+Insert Into lancement(lieu, date_heure, id_pays, id_planete)/*5*/
+Values ('Taiyuan','1998-07-22T16:05:09','2','2');
+
+
+/*OOOOOOOOOOOOOOOOOOOObjectiffffffffffffffffffffffff*/
+
+Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*MARSSSSS*/
+values ('2', 'MARS', 'Exploration', 'OBJECTIF EXPLORATION'); /*B*/
+
+Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*A*/
+values ('2', 'MARS', 'Etapes', '');
+
+Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*A*/
+values ('4', 'Jupiter', 'Explorations', '');
+
+Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*C*/
+values ('3', 'Venus', 'Satelites', '');
+
+Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*C*/
+values ('2', 'Mercure', 'Etapes', '');
+
+/*MMMMMMMMMMMMMMMMMMMMmiiiissssssssssiiooooooooooon*/
+
+
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*A*/
+Values ('2', '1', 'TERRE-MARS_JUPITER', '2019-08-14', '2040-07-25');
+
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*B*/
+Values ('3', '3', 'MARS_EXPLO', '2016-12-10', '2024-06-15');
+
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*C*/
+Values ('1', '2', 'TERRE-VENUS-MERCURE','2021-12-01', '2025-03-14');
+
+
+/*llllllllllllllliiiiiiiieennnnnn_veeehicculeeeeeeeeeeeeeeee*/
+
+Insert Into (id_vehicule, id_mission)
+Values ('2','1');
+
+Insert Into (id_vehicule, id_mission)
+Values ('6','1');
+
+Insert Into (id_vehicule, id_mission)
+Values ('10','1');
+
+Insert Into (id_vehicule, id_mission)
+Values ('5','2');
+
+Insert Into (id_vehicule, id_mission)
+Values ('7','2');
+
+Insert Into (id_vehicule, id_mission)
+Values ('9','2');
+
+
+Insert Into (id_vehicule, id_mission)
+Values ('13','3');
+
+Insert Into (id_vehicule, id_mission)
+Values ('11','3');
+
+Insert Into (id_vehicule, id_mission)
+Values ('14','3');
+
+Insert Into (id_vehicule, id_mission)
+Values ('8','3');
 
 
 
+/*llliiiiiiiiiiieeeeeeeeeeeeeennnnn vehhhhiiiiiiiiiiiiiccccccccculllllllllleeeee*/
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('1', '2');
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('1', '3');
+
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('2', '1');
+
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('3', '4');
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('3', '5');
+
+
+/*****************/

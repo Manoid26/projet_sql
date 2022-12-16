@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS planetes (
        type_planete ENUM('gazeuses','telluriques') NOT NULL,
        diamètre BIGINT NOT NULL,
        satelite_naturel BOOLEAN NOT NULL,
-       système_solaire VARCHAR(255) NOT NULL DEFAULT 'Voie_lactée',
+       galaxie VARCHAR(255) NOT NULL DEFAULT 'Voie_lactée',
        CONSTRAINT pk_planetes PRIMARY KEY (id)
 );
 
