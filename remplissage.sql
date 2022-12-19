@@ -1,5 +1,5 @@
 
-/* PAYSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+/* PAYS*/
 
 Insert Into pays(nom, langue_origine) /*1*/
 Values('Etas-Unis','Anglais');
@@ -246,8 +246,16 @@ Values('3','baguette','lanceur',TRUE,'hydrogene');
 Insert Into vehicule(id_centre_spacial,nom,type_vehicule,habitable,type_energie)/*14*/
 Values('4','Bretzel','Capsule',TRUE,'électrique');
 
+Insert Into vehicule(id_centre_spacial,nom,type_vehicule,habitable,type_energie)/*15*/
+Values('1','Eagle','Capsule',TRUE,'électrique');
 
-/*Astronauteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
+Insert Into vehicule(id_centre_spacial,nom,type_vehicule,habitable,type_energie)/*16*/
+Values('1','SaturnV','Lanceur',FALSE,'ergols_liquides');
+
+Insert Into vehicule(id_centre_spacial,nom,type_vehicule,habitable,type_energie)/*17*/
+Values('1','CSM','Capsule',TRUE,'électrique');
+
+/*Astronaute*/
 
 Insert Into astronaute(id_pays, id_centre_spacial, nom, prenom, date_naissance, date_mort, date_recrutement)/*1*/
 Values('1','1','Clinton','Francklin','1969-12-01',NULL,'1999-02-12');/*1*/
@@ -288,7 +296,16 @@ Values('31','5','Muyard','Cyprien','1940-02-29',NULL,'1970-09-18');/*A*/
 Insert Into astronaute(id_pays, id_centre_spacial, nom, prenom, date_naissance, date_mort, date_recrutement)/*13*/
 Values('25','5','Smith','Quentin','1995-01-01',NULL,'2019-09-06');/*B*/
 
-/*equipageeeeeeeeeeeeeeeeeeeeeeeeee*/
+Insert Into astronaute(id_pays, id_centre_spacial, nom, prenom, date_naissance, date_mort, date_recrutement)/*14*/
+Values('1','1','Armstrong','Neil','1930-08-05','2012-08-25','1962-09-13');/*B*/
+
+Insert Into astronaute(id_pays, id_centre_spacial, nom, prenom, date_naissance, date_mort, date_recrutement)/*15*/
+Values('1','1','Aldrin','Edwin','1930-01-20',NULL,'1963-10-17');/*B*/
+
+Insert Into astronaute(id_pays, id_centre_spacial, nom, prenom, date_naissance, date_mort, date_recrutement)/*16*/
+Values('1','1','Collins','Micheal','1930-10-31','2021-04-28','1963-10-14');/*B*/
+
+/*equipage*/
 
 Insert Into équipage(nom)/*1*/
 Values('troupes délites');
@@ -299,7 +316,19 @@ Values('free wifi');
 Insert Into équipage(nom)/*3*/
 Values('no stress déstresse');
 
-/*lien astrooooooooooo d'eeeeeeqqqqqqqqqquiiiiiiiiiipeeeeeee*/
+Insert Into équipage(nom)/*4*/
+Values('Apollo11');
+
+/*lien astro d'equipe*/
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('14','4','Commandant');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('15','4','Copilote');
+
+Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
+Values('16','4','Copilote');
 
 Insert Into lien_astro_équip (id_astronaute, id_équipage, post)
 Values('10','2','Medecin');
@@ -344,34 +373,36 @@ Values('1','3','Commandant');
 
 
 
-/*plaaaaaaaaaaaaaaaaaaaaneeeeeeeeeeete*/
+/*planetes*/
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*1*/
-Values ('Mercure','telluriques','4880','0');
+Values ('Mercure','telluriques','4880',FALSE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*2*/
-Values ('Terre','telluriques','12742','1');
+Values ('Terre','telluriques','12742',TRUE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*3*/
-Values ('Venus','telluriques','12104','0');
+Values ('Venus','telluriques','12104',FALSE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*4*/
-Values ('Mars','telluriques','6779','2');
+Values ('Mars','telluriques','6779',TRUE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*5*/
-Values ('Jupiter','gazeuses','139820','80');
+Values ('Jupiter','gazeuses','139820',TRUE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*6*/
-Values ('Saturne','gazeuses','116460','82');
+Values ('Saturne','gazeuses','116460',TRUE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*7*/
-Values ('Uranus','gazeuses','50724','27');
+Values ('Uranus','gazeuses','50724',TRUE);
 
 Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*8*/
-Values ('Neptune','gazeuses','49244','14');
+Values ('Neptune','gazeuses','49244',TRUE);
 
+Insert Into planetes(nom,type_planete,diamètre,satelite_naturel)/*8*/
+Values ('Lune','telluriques','3474',FALSE);
 
-/*Laaaaaaaaaaaaaaaaaaaaaaaaaaancementtttttttttttttt*/
+/*Lancement*/
 
 Insert Into lancement(lieu, date_heure, id_pays, id_planetes)/*1*/
 Values ('Guyanes','2020-05-21 12:00:01','5','2');
@@ -388,38 +419,54 @@ Values ('Plesetsk','2015-11-28 13:25:29','10','2');
 Insert Into lancement(lieu, date_heure, id_pays, id_planetes)/*5*/
 Values ('Taiyuan','1998-07-22 16:05:09','2','2');
 
+Insert Into lancement(lieu, date_heure, id_pays, id_planetes)/*6*/
+Values ('Cape Canaveral','1969-07-16 14:32:09','1','2');
 
-/*OOOOOOOOOOOOOOOOOOOObjectiffffffffffffffffffffffff*/
+/*Objectif*/
 
-Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*MARSSSSS*/
-values ('2', 'MARS', 'Exploration', 'OBJECTIF EXPLORATION'); /*B*/
+Insert Into objectif(id_planetes,type_objectif,objectif)/*MARSSSSS*/
+values ('2', 'Exploration', 'OBJECTIF EXPLORATION'); /*1*/
 
-Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*A*/
-values ('2', 'MARS', 'Etape', '');
+Insert Into objectif(id_planetes,type_objectif,objectif)/*2*/
+values ('2', 'Etape', '');
 
-Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*A*/
-values ('4', 'Jupiter', 'Exploration', '');
+Insert Into objectif(id_planetes,type_objectif,objectif)/*3*/
+values ('4', 'Exploration', '');
 
-Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*C*/
-values ('3', 'Venus', 'Satelite', '');
+Insert Into objectif(id_planetes,type_objectif,objectif)/*4*/
+values ('3', 'Satelite', '');
 
-Insert Into objectif(id_planetes,nom,type_objectif,objectif)/*C*/
-values ('2', 'Mercure', 'Etape', '');
+Insert Into objectif(id_planetes,type_objectif,objectif)/*5*/
+values ('2', 'Etape', '');
 
-/*MMMMMMMMMMMMMMMMMMMMmiiiissssssssssiiooooooooooon*/
+Insert Into objectif(id_planetes,type_objectif,objectif)/*6*/
+values ('2', 'Etape', '');
+
+Insert Into objectif(id_planetes,type_objectif,objectif)/*7*/
+values ('2', 'Etape', 'Décollage');
+
+Insert Into objectif(id_planetes,type_objectif,objectif)/*8*/
+values ('9', 'Etape', 'Rester en orbite lunaire');
+
+Insert Into objectif(id_planetes,type_objectif,objectif)/*9*/
+values ('9', 'Exploration', 'Alunissage');
+
+/*mision*/
 
 
-Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*A*/
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*1*/
 Values ('2', '1', 'TERRE-MARS_JUPITER', '2019-08-14', '2040-07-25');
 
-Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*B*/
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*2*/
 Values ('3', '3', 'MARS_EXPLO', '2016-12-10', '2024-06-15');
 
-Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*C*/
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*3*/
 Values ('1', '2', 'TERRE-VENUS-MERCURE','2021-12-01', '2025-03-14');
 
+Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*4*/
+Values ('4', '6', 'Apollo_11','1969-07-16', '1969-07-24');
 
-/*llllllllllllllliiiiiiiieennnnnn_veeehicculeeeeeeeeeeeeeeee*/
+/*lien_veehicule*/
 
 Insert Into lien_vehicule_mission (id_vehicule, id_mission)
 Values ('2','1');
@@ -452,9 +499,26 @@ Values ('14','3');
 Insert Into lien_vehicule_mission (id_vehicule, id_mission)
 Values ('8','3');
 
+Insert Into lien_vehicule_mission (id_vehicule, id_mission)
+Values ('15','4');
+
+Insert Into lien_vehicule_mission (id_vehicule, id_mission)
+Values ('16','4');
+
+Insert Into lien_vehicule_mission (id_vehicule, id_mission)
+Values ('17','4');
 
 
-/*llliiiiiiiiiiieeeeeeeeeeeeeennnnn vehhhhiiiiiiiiiiiiiccccccccculllllllllleeeee*/
+/*lien mission objectif*/
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('4', '7');
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('4', '8');
+
+Insert Into lien_mission_objectif(id_mission,id_objectif)
+Values ('4', '9');
 
 Insert Into lien_mission_objectif(id_mission,id_objectif)
 Values ('1', '2');
@@ -475,3 +539,4 @@ Values ('3', '5');
 
 
 /*****************/
+SHOW WARNINGS;

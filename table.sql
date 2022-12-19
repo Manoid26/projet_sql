@@ -104,7 +104,6 @@ CREATE TABLE IF NOT EXISTS lancement (
 CREATE TABLE IF NOT EXISTS objectif(
        id BIGINT UNSIGNED  NOT NULL AUTO_INCREMENT,
        id_planetes BIGINT UNSIGNED NOT NULL,
-       nom VARCHAR(255) NOT NULL,
        type_objectif ENUM('Satelite','Exploration','Etape') NOT NULL,
        objectif TEXT(20000) NOT NULL,
        CONSTRAINT pk_objectif  PRIMARY KEY (id),
@@ -136,5 +135,147 @@ CREATE TABLE IF NOT EXISTS lien_mission_objectif(
        CONSTRAINT fk_lien_mission_objectif_id_mission_mission FOREIGN KEY (id_mission) REFERENCES mission(id) ON DELETE RESTRICT ON UPDATE RESTRICT,
        CONSTRAINT fk_lien_mission_objectif_id_objectif_objectif FOREIGN KEY (id_objectif) REFERENCES objectif(id) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
+
+source remplissage.sql
+
+/* PROCEDURE */
+DROP PROCEDURE IF EXISTS p_recherche_mission;
+DROP PROCEDURE IF EXISTS p_info_équipage;
+DROP PROCEDURE IF EXISTS p_info_véhicule;
+DROP PROCEDURE IF EXISTS p_info_lancement;
+DROP PROCEDURE IF EXISTS p_info_centre_spacial;
+DROP PROCEDURE IF EXISTS p_centre_spacial_complet;
+
+DELIMITER $
+
+CREATE PROCEDURE IF NOT EXISTS p_centre_spacial_complet(
+/*info complette sur le centre spacial*/
+       IN in_nom_centre VARCHAR(255)
+       )
+       BEGIN		
+		SELECT in_nom_centre as "nom du centre", COUNT(astronaute.id) as 'nombre d''astronaute encore en vie et/ou embauché'
+		FROM centre_spacial,astronaute
+		WHERE centre_spacial.id = id_centre_spacial
+		AND centre_spacial.nom = in_nom_centre
+		AND date_mort IS NULL		
+		;
+		
+		SELECT vehicule.nom,type_vehicule,type_energie,habitable
+		FROM vehicule,centre_spacial
+		WHERE centre_spacial.nom = in_nom_centre
+		AND centre_spacial.id = id_centre_spacial
+		;
+	END
+$
+
+CREATE PROCEDURE IF NOT EXISTS p_info_lancement(
+/*info sur le lieu de lancement*/
+       IN in_id_lancement INT UNSIGNED
+       )
+       BEGIN
+		SELECT lieu,date_heure,nom
+		FROM lancement,pays
+		WHERE lancement.id = in_id_lancement
+		AND pays.id = id_pays
+		;
+	END
+$
+
+CREATE PROCEDURE IF NOT EXISTS p_info_centre_spacial(
+/*info classique sur le centre spacial */
+       IN in_id_centre_spacial INT UNSIGNED
+       )
+       BEGIN
+		SELECT nom as 'centre spacial de la mission', directeur
+		FROM centre_spacial
+		WHERE id = in_id_centre_spacial
+		;
+	END
+$
+
+CREATE PROCEDURE IF NOT EXISTS p_info_équipage(
+/*info sur l'équipage et la fonction de chacun d'eux*/
+       IN in_id_equipage INT UNSIGNED
+       )
+       BEGIN
+		DECLARE v_id_centre_spacial INT UNSIGNED;
+
+		SET v_id_centre_spacial = (
+		    SELECT id_centre_spacial
+		    FROM astronaute,lien_astro_équip
+		    WHERE id_équipage = in_id_equipage
+		    LIMIT 1
+		);
+
+		SELECT nom as 'équipage',post as 'rôle'
+		FROM lien_astro_équip,astronaute
+		WHERE id_équipage = in_id_equipage
+		AND id_astronaute = id
+		;
+		CALL p_info_centre_spacial(v_id_centre_spacial);
+	END
+$
+
+CREATE PROCEDURE IF NOT EXISTS p_info_véhicule(
+/*info sur le/les véhicule utiliser*/
+       IN in_id_mission INT UNSIGNED
+       )
+       BEGIN
+		SELECT nom,type_vehicule,habitable,type_energie
+		FROM lien_vehicule_mission,vehicule
+		WHERE id_vehicule = id
+		AND id_mission  = in_id_mission
+		;
+	END
+$
+
+CREATE PROCEDURE IF NOT EXISTS p_recherche_mission(
+       IN in_nom VARCHAR(255)
+       )
+       BEGIN
+		DECLARE v_id_equipage INT UNSIGNED;
+		DECLARE v_id_mission INT UNSIGNED;
+		DECLARE v_id_lancement INT UNSIGNED;
+
+		SET v_id_equipage = (
+		    SELECT id_equipage
+		    FROM mission
+		    WHERE nom = in_nom	
+		);
+
+		SET v_id_mission = (
+		    SELECT id
+		    FROM mission
+		    WHERE nom = in_nom	
+		);
+		
+		SET v_id_lancement = (
+		    SELECT id_lancement
+		    FROM mission
+		    WHERE nom = in_nom	
+		);
+				
+		SELECT mission.nom, date_debut, date_fin,type_objectif, objectif,planetes.nom
+		FROM mission,objectif,lien_mission_objectif,planetes 
+		WHERE mission.nom = in_nom
+		AND mission.id = id_mission
+
+AND objectif.id = id_objectif
+		AND planetes.id = id_planetes
+		;
+		CALL p_info_équipage(v_id_equipage);
+		CALL p_info_véhicule(v_id_mission);
+		CALL p_info_lancement(v_id_lancement);
+	END
+$
+
+
+DELIMITER ;
+
+CALL p_recherche_mission('Apollo_11');
+CALL p_centre_spacial_complet('NASA');
+
+
+
 
 SHOW WARNINGS;
