@@ -202,7 +202,7 @@ Insert Into centre_spacial(nom,id_pays,directeur)/*12*/
 Values('BDD','5','samuel emilie');
 
 
-/*Vehiculeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee*/
+/*Vehicule*/
 
 Insert Into vehicule(id_centre_spacial,nom,type_vehicule,habitable,type_energie)/*1*/
 Values('1','ORION','Capsule',TRUE,'électrique');
@@ -466,7 +466,8 @@ Values ('1', '2', 'TERRE-VENUS-MERCURE','2021-12-01', '2025-03-14');
 Insert Into mission (id_equipage, id_lancement , nom, date_debut,date_fin)/*4*/
 Values ('4', '6', 'Apollo_11','1969-07-16', '1969-07-24');
 
-/*lien_veehicule*/
+
+/*lien_vehicule*/
 
 Insert Into lien_vehicule_mission (id_vehicule, id_mission)
 Values ('2','1');

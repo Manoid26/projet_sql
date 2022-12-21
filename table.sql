@@ -136,6 +136,26 @@ CREATE TABLE IF NOT EXISTS lien_mission_objectif(
        CONSTRAINT fk_lien_mission_objectif_id_objectif_objectif FOREIGN KEY (id_objectif) REFERENCES objectif(id) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
+/* Pour éviter les missions avec le même nom */
+ALTER TABLE mission
+ADD CONSTRAINT cstunq_mission_nom
+UNIQUE unq_mission_nom (nom);
+
+/* Check pour vérifier si l'age de l'astronaute est bon  */
+ALTER TABLE astronaute
+ADD CONSTRAINT cstchk_astronaute_age
+CHECK (date_naissance<date_mort);
+
+ALTER TABLE astronaute
+ADD CONSTRAINT cstchk_astronaute_recru_naissance
+CHECK (date_naissance<date_recrutement);
+
+ALTER TABLE astronaute
+ADD CONSTRAINT cstchk_astronaute_recru_mort
+CHECK (date_recrutement<date_mort);
+
+
+
 source remplissage.sql
 
 /* PROCEDURE */
@@ -145,8 +165,63 @@ DROP PROCEDURE IF EXISTS p_info_véhicule;
 DROP PROCEDURE IF EXISTS p_info_lancement;
 DROP PROCEDURE IF EXISTS p_info_centre_spacial;
 DROP PROCEDURE IF EXISTS p_centre_spacial_complet;
+DROP PROCEDURE IF EXISTS p_ajout_astronaute_dans_équipage;
+DROP PROCEDURE IF EXISTS p_modif_role_équipage;
 
 DELIMITER $
+
+CREATE PROCEDURE IF NOT EXISTS p_modif_role_équipage(
+/*Pour ajouter des astronaute*/    
+       IN in_id_astronaute INT UNSIGNED,
+       IN in_id_old_équipage INT UNSIGNED,
+       IN in_id_new_équipage INT UNSIGNED,
+       IN in_new_role ENUM('Medecin','Chercheur','Commandant','Copilote','Passager','Ingénieur_de_bord')
+       )
+       BEGIN
+	IF in_id_astronaute IN (SELECT id FROM astronaute) THEN
+	   IF in_id_old_équipage IN (SELECT id FROM équipage) THEN
+	      IF in_id_astronaute NOT IN (SELECT id_astronaute FROM lien_astro_équip WHERE in_id_new_équipage = id_équipage) THEN
+	      	 DELETE FROM lien_astro_équip WHERE id_astronaute = in_id_astronaute AND in_id_old_équipage = id_équipage;
+	      	 CALL p_ajout_astronaute_dans_équipage(in_id_astronaute,in_id_new_équipage,in_new_role);
+	      ELSE
+	      	 DELETE FROM lien_astro_équip WHERE id_astronaute = in_id_astronaute AND in_id_new_équipage = id_équipage;	    
+	      	 DELETE FROM lien_astro_équip WHERE id_astronaute = in_id_astronaute AND in_id_old_équipage = id_équipage;
+	      	 CALL p_ajout_astronaute_dans_équipage(in_id_astronaute,in_id_new_équipage,in_new_role);		 
+	      END IF;
+	   ELSE
+	      SELECT "équipage inexistant";
+	   END IF;
+        ELSE
+	   SELECT "Astronaute inexistant";
+	END IF;
+   	
+       END
+$
+
+CREATE PROCEDURE IF NOT EXISTS p_ajout_astronaute_dans_équipage(
+/*Pour ajouter des astronaute*/    
+       IN in_id_astronaute INT UNSIGNED,
+       IN in_id_équipage INT UNSIGNED,
+       IN in_role ENUM('Medecin','Chercheur','Commandant','Copilote','Passager','Ingénieur_de_bord')
+       )
+       BEGIN
+	IF in_id_astronaute IN (SELECT id FROM astronaute) THEN
+	   IF in_id_équipage IN (SELECT id FROM équipage) THEN
+	      IF in_id_astronaute NOT IN (SELECT id_astronaute FROM lien_astro_équip WHERE in_id_équipage = id_équipage) THEN
+	      	 INSERT INTO lien_astro_équip (id_astronaute,id_équipage,post)
+		 VALUES(in_id_astronaute,in_id_équipage,in_role);
+	      ELSE
+		 SELECT "Déjà existant";
+	      END IF;
+	   ELSE
+	      SELECT "équipage inexistant";
+	   END IF;
+        ELSE
+	   SELECT "Astronaute inexistant";
+	END IF;
+   	
+       END
+$
 
 CREATE PROCEDURE IF NOT EXISTS p_centre_spacial_complet(
 /*info complette sur le centre spacial*/
@@ -159,7 +234,7 @@ CREATE PROCEDURE IF NOT EXISTS p_centre_spacial_complet(
 		AND centre_spacial.nom = in_nom_centre
 		AND date_mort IS NULL		
 		;
-		
+		/* Info sur le nom, type et energie du véhicule */
 		SELECT vehicule.nom,type_vehicule,type_energie,habitable
 		FROM vehicule,centre_spacial
 		WHERE centre_spacial.nom = in_nom_centre
@@ -254,7 +329,9 @@ CREATE PROCEDURE IF NOT EXISTS p_recherche_mission(
 		    FROM mission
 		    WHERE nom = in_nom	
 		);
-				
+
+		/* permet l'affichage des information sur un mission rechercher */
+
 		SELECT mission.nom, date_debut, date_fin,type_objectif, objectif,planetes.nom
 		FROM mission,objectif,lien_mission_objectif,planetes 
 		WHERE mission.nom = in_nom
@@ -263,6 +340,7 @@ CREATE PROCEDURE IF NOT EXISTS p_recherche_mission(
 AND objectif.id = id_objectif
 		AND planetes.id = id_planetes
 		;
+		/* Sous procédure déclarer plus haut */
 		CALL p_info_équipage(v_id_equipage);
 		CALL p_info_véhicule(v_id_mission);
 		CALL p_info_lancement(v_id_lancement);
