@@ -1,28 +1,3 @@
-DROP TABLE IF EXISTS lien_mission_objectif
-;
-DROP TABLE IF EXISTS lien_vehicule_mission
-;
-DROP TABLE IF EXISTS mission
-;
-DROP TABLE IF EXISTS objectif
-;
-DROP TABLE IF EXISTS lancement
-;
-DROP TABLE IF EXISTS planetes
-;
-DROP TABLE IF EXISTS lien_astro_équip
-;
-DROP TABLE IF EXISTS équipage
-;
-DROP TABLE IF EXISTS astronaute
-;
-DROP TABLE IF EXISTS vehicule
-;
-DROP TABLE IF EXISTS centre_spacial
-;
-DROP TABLE IF EXISTS pays
-;
-
 
 CREATE TABLE IF NOT EXISTS pays (
        id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -153,10 +128,6 @@ CHECK (date_naissance<date_recrutement);
 ALTER TABLE astronaute
 ADD CONSTRAINT cstchk_astronaute_recru_mort
 CHECK (date_recrutement<date_mort);
-
-
-
-/*source objets.sql*/
 
 
 SHOW WARNINGS;
